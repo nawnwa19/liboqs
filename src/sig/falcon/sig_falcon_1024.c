@@ -67,7 +67,7 @@ OQS_API OQS_STATUS OQS_SIG_falcon_1024_sign(uint8_t *signature, size_t *signatur
 	}
 #endif /* OQS_DIST_BUILD */
 #else
-	return (OQS_STATUS) PQCLEAN_FALCON1024_CLEAN_crypto_sign_signature(signature, signature_len, message, message_len, secret_key);
+	return (OQS_STATUS) CUSTOM_PADDED_crypto_sign_signature(signature, signature_len, message, message_len, secret_key, 10);
 #endif
 }
 
@@ -83,7 +83,7 @@ OQS_API OQS_STATUS OQS_SIG_falcon_1024_verify(const uint8_t *message, size_t mes
 	}
 #endif /* OQS_DIST_BUILD */
 #else
-	return (OQS_STATUS) PQCLEAN_FALCON1024_CLEAN_crypto_sign_verify(signature, signature_len, message, message_len, public_key);
+	return (OQS_STATUS) CUSTOM_PADDED_crypto_sign_verify(signature, signature_len, message, message_len, public_key, 10);
 #endif
 }
 

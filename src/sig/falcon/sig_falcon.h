@@ -27,4 +27,14 @@ OQS_API OQS_STATUS OQS_SIG_falcon_1024_sign(uint8_t *signature, size_t *signatur
 OQS_API OQS_STATUS OQS_SIG_falcon_1024_verify(const uint8_t *message, size_t message_len, const uint8_t *signature, size_t signature_len, const uint8_t *public_key);
 #endif
 
+#if defined OQS_ENABLE_SIG_falcon_512 || defined OQS_ENABLE_SIG_falcon_1024
+int CUSTOM_PADDED_crypto_sign_signature(
+    uint8_t *sig, size_t *siglen,
+    const uint8_t *m, size_t mlen, const uint8_t *sk, unsigned logn);
+
+int CUSTOM_PADDED_crypto_sign_verify(
+    const uint8_t *sig, size_t siglen,
+    const uint8_t *m, size_t mlen, const uint8_t *pk, unsigned logn);
+#endif
+
 #endif
